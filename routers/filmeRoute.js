@@ -3,13 +3,18 @@ const router = Router();
 const filmeController = require("../controllers/filmeController");
 
 router.get("/filmes", (req, res) => {
-  const resposta = filmeController.buscar();
-  res.send(resposta);
+  const listaFilmes = filmeController.buscar();
+  listaFilmes
+    .then((filmes) => res.status(200).json(filmes))
+    .catch((error) => res.status(400).json(error.message));
 });
 
 router.post("/filmes", (req, res) => {
-  const resposta = filmeController.cadastrar();
-  res.send(resposta);
+  const novoFilme = req.body;
+  const filme = filmeController.cadastrar(novoFilme);
+  filme
+  .then((filmeCadastrado) => res.status(201).json(filmeCadastrado))
+  .catch((error) => res.status(400).json(error.message));
 });
 
 router.put("/filmes/:id", (req, res) => {

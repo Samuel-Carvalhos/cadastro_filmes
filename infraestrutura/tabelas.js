@@ -20,7 +20,7 @@ class Tabelas {
         console.log(error.message());
         return;
       }
-      console.log("Tabe criada com Sucesso!");
+      console.log("Tabela criada com Sucesso!");
     });
   }
 }
