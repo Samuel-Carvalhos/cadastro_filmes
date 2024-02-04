@@ -1,22 +1,27 @@
-const {Router} = require("express");
+const { Router } = require("express");
 const router = Router();
+const filmeController = require("../controllers/filmeController");
 
 router.get("/filmes", (req, res) => {
-    res.send("Listando Filme!");
-})
+  const resposta = filmeController.buscar();
+  res.send(resposta);
+});
 
 router.post("/filmes", (req, res) => {
-    res.send("Adicionando um novo filme!");
-})
+  const resposta = filmeController.cadastrar();
+  res.send(resposta);
+});
 
 router.put("/filmes/:id", (req, res) => {
-    const { id } = req.params;
-    res.send("Atualizando Filme ${id}...")
+  const { id } = req.params;
+  const resposta = filmeController.atualizar(id);
+  res.send(resposta);
 });
 
 router.delete("/filmes/:id", (req, res) => {
-    const { id } = req.params;
-    res.send("Atenção...Excluindo Filme!" + id + "...")
+  const { id } = req.params;
+  const resposta = filmeController.deletar(id);
+  res.send(resposta);
 });
 
 module.exports = router;
