@@ -17,7 +17,7 @@ class Tabelas {
     this.conexao.query(sql, (error) => {
       if (error) {
         console.log("Aconteceu um erro na hora de criar a tabela");
-        console.log(error.message());
+        console.log(error.message);
         return;
       }
       console.log("Tabela criada com Sucesso!");

@@ -1,14 +1,12 @@
 const express = require("express");
 const app = express();
+const config = require('config');
 const port = 3000;
-const router = require("./routers/index");
-const conexao = require("./infraestrutura/conexao");
-const tabelas = require("./infraestrutura/tabelas");
+const appCustom = require("./config/appCustom");
 
-router(app, express);
-tabelas.init(conexao);
+appCustom(app, express);
 
-app.listen(port, (error) => {
+app.listen(config.get("port"), (error) => {
   if (error) {
     console.log("Erro");
     return;

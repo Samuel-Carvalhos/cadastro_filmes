@@ -1,32 +1,34 @@
 const conexao = require("../infraestrutura/conexao");
 class FilmeModel {
-  listar() {
-    const sql = "SELECT * FROM filmes";
-    return new Promise((resolve, reject) => {
-      conexao.query(sql, {}, (error, resposta) => {
-        if (error) {
-          console.log("Aconteceu algum erro na hora de listar...");
-          reject(error);
-        }
-        console.log("Ok!");
-        resolve(resposta);
-      });
-    });
-  }
-
-  criar(novoFilme) {
-    const sql = "INSERT INTO filmes SET ?";
-    return new Promise((resolve, reject) => {
-      conexao.query(sql, novoFilme, (error, resposta) => {
-        if (error) {
-          console.log("Aconteceu algum erro na hora de listar...");
-          reject(error);
-        }
-        console.log("OK!");
-        resolve(resposta);
-      });
-    });
-  }
-}
-
-module.exports = new FilmeModel();
+    executaQuery(sql, parametros = "") {
+        return new Promise((resolve, reject) => {
+          conexao.query(sql, parametros, (error, resposta) => {
+            if (error) {
+              return reject(error);
+            }
+            return resolve(resposta);
+          });
+        });
+      }
+      listar() {
+        const sql = "SELECT * FROM filmes";
+        return this.executaQuery(sql);
+      }
+    
+      cadastrar(novoFilme) {
+        const sql = "INSERT INTO filmes SET ?";
+        return this.executaQuery(sql, novoFilme);
+      }
+    
+      atualizar(filmeAtualizado, id) {
+        const sql = "UPDATE filmes SET ? WHERE id = ?";
+        return this.executaQuery(sql, [filmeAtualizado, id]);
+      }
+    
+      delete(id) {
+        const sql = "DELETE FROM filmes WHERE id = ?";
+        return this.executaQuery(sql, id);
+      }
+    }
+    
+    module.exports = new FilmeModel();
