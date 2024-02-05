@@ -7,9 +7,9 @@ router.get("/filmes", filmeController.buscar);
 router.post("/filmes", filmeController.cadastrar);
  
 
-router.put("/filmes/:id", filmeController.atualizar);
+router.put("/filme/:id", filmeController.atualizar);
   
 
-router.delete("/filmes/:id", filmeController.deletar);
+router.delete("/filme/:id", filmeController.deletar);
   
 module.exports = router;
