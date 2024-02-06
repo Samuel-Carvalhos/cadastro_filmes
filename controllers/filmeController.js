@@ -8,7 +8,7 @@ class filmeController {
   }
   cadastrar(req, res) {
     const novoFilme = req.body;
-    const filme = filmeModel.criar(novoFilme);
+    const filme = filmeModel.cadastrar(novoFilme);
     return filme
       .then((filmeCadastrado) => res.status(201).json(filmeCadastrado))
       .catch((error) => res.status(400).json(error.message));

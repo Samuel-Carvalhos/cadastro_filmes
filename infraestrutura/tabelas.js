@@ -6,7 +6,7 @@ class Tabelas {
 
   criarTabelaFilmes() {
     const sql = `
-            create table if not exists locadora_filmes (
+            create table if not exists filmes (
             id int not null auto_increment primary key,
             Data date,
             descricao varchar(100),
