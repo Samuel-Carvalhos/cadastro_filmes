@@ -1,7 +1,7 @@
 const filmeModel = require("../models/filmeModel");
 class filmeController {
   buscar(req, res) {
-    const listaFilmes = filmeModel.listar();
+    const listaFilmes = filmeModel.buscar();
     return listaFilmes
       .then((filmes) => res.status(200).json(filmes))
       .catch((error) => res.status(400).json(error.message));
@@ -25,7 +25,7 @@ class filmeController {
   }
   deletar(req, res) {
     const { id } = req.params;
-    const filme = filmeModel.delete(id);
+    const filme = filmeModel.excluir(id);
     return filme
       .then((resultFilmeDeletado) => res.status(200).json(resultFilmeDeletado))
       .catch((error) => res.status(400).json(error.message));
