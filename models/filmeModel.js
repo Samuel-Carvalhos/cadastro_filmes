@@ -32,7 +32,3 @@ class FilmeModel {
 }
 
 module.exports = new FilmeModel();
-
-
-
-//alterar aqui o excluir p/ deletar!!!

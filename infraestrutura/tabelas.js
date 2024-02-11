@@ -11,8 +11,8 @@ class Tabelas {
             Data date,
             descricao varchar(100),
             classificacao varchar(100),
-            status enum("ativo", "realizado", "cancelado") default "ativo"
-            );
+           
+            ); duracao varchar(10)not null
             `;
     this.conexao.query(sql, (error) => {
       if (error) {
