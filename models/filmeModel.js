@@ -16,8 +16,9 @@ class FilmeModel {
   }
 
   cadastrar(novoFilme) {
-    const sql = "INSERT INTO filmes SET ?";
-    return this.executaQuery(sql, novoFilme);
+    const sql = "INSERT INTO filmes (Data, descricao , classificacao, duracao) VALUES (?, ?, ?, ?);"
+    console.log (novoFilme)
+    return this.executaQuery(sql, [novoFilme.Data, novoFilme.descricao, novoFilme.classificacao, novoFilme.duracao]);
   }
 
   atualizar(filmeAtualizado, id) {

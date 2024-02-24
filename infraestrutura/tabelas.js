@@ -1,7 +1,7 @@
 class Tabelas {
   init(conexao) {
     this.conexao = conexao;
-    this.criarTabelaFilmes();
+    //this.criarTabelaFilmes();
   }
 
   criarTabelaFilmes() {
@@ -11,8 +11,8 @@ class Tabelas {
             Data date,
             descricao varchar(100),
             classificacao varchar(100),
-           
-            ); duracao varchar(10)not null
+            duracao varchar(10)not null
+            );
             `;
     this.conexao.query(sql, (error) => {
       if (error) {
