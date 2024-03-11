@@ -16,15 +16,16 @@ class FilmeModel {
   }
 
   cadastrar(novoFilme) {
-    const sql = "INSERT INTO filmes (Data, descricao , classificacao, duracao) VALUES (?, ?, ?, ?);"
+    const sql = "INSERT INTO filmes (nome_do_filme, descricao, duracao, classificacao ) VALUES (?, ?, ?, ? )";
     console.log (novoFilme)
-    return this.executaQuery(sql, [novoFilme.Data, novoFilme.descricao, novoFilme.classificacao, novoFilme.duracao]);
+    return this.executaQuery(sql, [novoFilme.nome_do_filme, novoFilme.descricao, novoFilme.duracao, novoFilme.classificacao]);
   }
 
   atualizar(filmeAtualizado, id) {
     const sql = "UPDATE filmes SET ? WHERE id = ?";
     return this.executaQuery(sql, [filmeAtualizado, id]);
   }
+
 
   excluir(id) {
     const sql = "DELETE FROM filmes WHERE id = ?";

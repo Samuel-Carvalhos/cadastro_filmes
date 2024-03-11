@@ -7,12 +7,12 @@ class Tabelas {
   criarTabelaFilmes() {
     const sql = `
             create table if not exists filmes (
-            id int not null auto_increment primary key,
-            Data date,
-            descricao varchar(100),
-            classificacao varchar(100),
-            duracao varchar(10)not null
-            );
+              id int not null auto_increment primary key,
+              nome_do_filme varchar(100)not null,
+              descricao varchar(100)not null,
+              duracao varchar(10)not null,
+              classificacao varchar(100)not null
+              );
             `;
     this.conexao.query(sql, (error) => {
       if (error) {

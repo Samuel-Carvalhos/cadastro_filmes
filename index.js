@@ -10,5 +10,5 @@ app.listen(port, (error) => {
     console.log("Erro");
     return;
   }
-  console.log("Ok!");
+  console.log("Tudo Certo!");
 });
